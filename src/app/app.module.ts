@@ -14,7 +14,8 @@ import { FormErrorComponent } from './form-error/form-error.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    FormErrorComponent
   ],
   imports: [
     BrowserModule,

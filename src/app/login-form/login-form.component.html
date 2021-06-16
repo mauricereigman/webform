@@ -1,13 +1,12 @@
 <div class="d-flex">
   <mat-card class="mx-auto mt-5">
     <form [formGroup]="form" class="d-flex flex-column">
+
       <mat-form-field class="mb-4">
         <mat-label>first name</mat-label>
         <input [formControl]="firstNameControl" matInput placeholder="first name">
         <mat-error>
-          <div *ngFor="let error of firstNameControl.errors | keyvalue">
-            {{error.value}}
-          </div>
+          <app-form-field-errors [errors]="firstNameControl.errors"></app-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -15,9 +14,7 @@
         <mat-label>last name</mat-label>
         <input [formControl]="lastNameControl" matInput placeholder="last name">
         <mat-error>
-          <div *ngFor="let error of lastNameControl.errors | keyvalue">
-            {{error.value}}
-          </div>
+          <app-form-field-errors [errors]="lastNameControl.errors"></app-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -25,9 +22,7 @@
         <mat-label>email</mat-label>
         <input [formControl]="emailControl" matInput placeholder="email" type="email">
         <mat-error>
-          <div *ngFor="let error of emailControl.errors | keyvalue">
-            {{error.value}}
-          </div>
+          <app-form-field-errors [errors]="emailControl.errors"></app-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -35,9 +30,7 @@
         <mat-label>password</mat-label>
         <input [formControl]="passwordControl" matInput placeholder="password" type="password">
         <mat-error>
-          <div *ngFor="let error of passwordControl.errors | keyvalue">
-            {{error.value}}
-          </div>
+          <app-form-field-errors [errors]="passwordControl.errors"></app-form-field-errors>
         </mat-error>
       </mat-form-field>
 
