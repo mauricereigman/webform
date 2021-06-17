@@ -30,7 +30,7 @@ export class CustomValidators {
         errors.containsFirstOrLastName = CustomValidators.CONTAINS_FIRST_OR_LAST_NAME_MESSAGE
       }
 
-      return errors.size === 0 ? null : errors
+      return Object.values(errors).length === 0 ? null : errors
     };
   }
 
@@ -39,23 +39,26 @@ export class CustomValidators {
       Validators.email(control) ? {invalidEmail: CustomValidators.INVALID_EMAIL} : null
   }
 
-  public static hasCorrectAmountOfChars(value: string | undefined): boolean {
+  private static hasCorrectAmountOfChars(value: string | undefined): boolean {
     return !!value && value.length >= 8
   }
 
-  public static hasLowerAndUpperCase(value: string | undefined): boolean {
+  private static hasLowerAndUpperCase(value: string | undefined): boolean {
     return !!value && new RegExp("(?=.*[a-z])(?=.*[A-Z])")
       .test(value);
   }
 
-  public static doesNotContainUserNames(value: string | undefined, firstName: string | undefined, lastName: string | undefined): boolean {
+  private static doesNotContainUserNames(value: string | undefined, firstName: string | undefined, lastName: string | undefined): boolean {
     if (!value) return true
 
     let isValid: boolean = true;
+
     if (firstName) {
       isValid = !value.includes(firstName)
-    } else if (lastName) {
-      isValid = isValid && !value.includes(lastName)
+    }
+
+    if (lastName && isValid) {
+      isValid = !value.includes(lastName)
     }
 
     return isValid

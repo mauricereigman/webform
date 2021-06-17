@@ -10,6 +10,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 import { FormErrorComponent } from './form-error/form-error.component';
+import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { FormErrorComponent } from './form-error/form-error.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

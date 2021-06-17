@@ -34,7 +34,10 @@
         </mat-error>
       </mat-form-field>
 
+      <button mat-raised-button color="primary" class="mx-auto mt-5" (click)="signUp(form)" [disabled]="form.invalid">submit</button>
+      <mat-error>
+        <app-form-field-errors [errors]="form.errors"></app-form-field-errors>
+      </mat-error>
     </form>
   </mat-card>
-
 </div>

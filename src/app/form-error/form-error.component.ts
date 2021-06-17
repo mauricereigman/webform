@@ -8,7 +8,7 @@ import {ValidationErrors} from "@angular/forms";
 })
 export class FormErrorComponent implements OnInit {
 
-  @Input() public errors: ValidationErrors | null;
+  @Input() public errors: ValidationErrors | null = null
 
   constructor() { }
 

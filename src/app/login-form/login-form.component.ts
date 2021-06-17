@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {CustomValidators} from "../utils/custom-validators";
+import {SignUpService} from "../services/sign-up.service";
+import {catchError} from "rxjs/operators";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
@@ -25,11 +28,20 @@ export class LoginFormComponent {
     password: this.passwordControl
   })
 
-  constructor() {
+  constructor(private readonly signUpService: SignUpService) {
   }
 
-  private static requiredValidator(fieldName: string): ValidatorFn {
-    return (control): ValidationErrors | null =>
-      control.value ? null : {required: `${fieldName} is required`};
+  public signUp(form: FormGroup): void {
+    this.signUpService.signUp({
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      email: form.value.email
+    }).pipe(
+      catchError(error => {
+        form.setErrors({unknownError: "oh ooh, something went wrong"})
+        return throwError(error)
+      })
+    ).subscribe()
   }
+
 }
