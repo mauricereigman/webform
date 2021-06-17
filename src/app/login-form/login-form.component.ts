@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CustomValidators} from "../utils/custom-validators";
 import {SignUpService} from "../services/sign-up.service";
-import {catchError} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-login-form',
@@ -28,19 +27,28 @@ export class LoginFormComponent {
     password: this.passwordControl
   })
 
+  public submitted: boolean = false;
+  public suppressSubmitButton = false;
+
   constructor(private readonly signUpService: SignUpService) {
   }
 
   public signUp(form: FormGroup): void {
+    this.suppressSubmitButton = true
     this.signUpService.signUp({
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       email: form.value.email
     }).pipe(
-      catchError(error => {
-        form.setErrors({unknownError: "oh ooh, something went wrong"})
-        return throwError(error)
-      })
+      tap(
+        res => {
+          this.submitted = true
+        },
+        err => {
+          form.setErrors({unknownError: "oh ooh, something went wrong"})
+          this.suppressSubmitButton = false
+        }
+      )
     ).subscribe()
   }
 
