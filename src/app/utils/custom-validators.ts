@@ -54,11 +54,11 @@ export class CustomValidators {
     let isValid: boolean = true;
 
     if (firstName) {
-      isValid = !value.includes(firstName)
+      isValid = !value.toLocaleLowerCase().includes(firstName.toLocaleLowerCase())
     }
 
     if (lastName && isValid) {
-      isValid = !value.includes(lastName)
+      isValid = !value.toLocaleLowerCase().includes(lastName.toLocaleLowerCase())
     }
 
     return isValid
