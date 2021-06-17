@@ -64,21 +64,21 @@ describe("CustomValidators", () => {
       const value = `meaN`;
       const control = new FormControl(value, CustomValidators.passwordValidator(firstNameControl, lastNameControl))
 
-      expect(control.errors?.invalidCharacterCount).toEqual( "must contain at least 8 characters")
+      expect(control.errors?.invalidCharacterCount).toEqual("must contain at least 8 characters")
     })
 
     it("should return validation error message if control state contains first name", () => {
       const value = `Henk`;
       const control = new FormControl(value, CustomValidators.passwordValidator(firstNameControl, firstNameControl))
 
-      expect(control.errors?.containsFirstOrLastName).toEqual( "must not contain first or last name")
+      expect(control.errors?.containsFirstOrLastName).toEqual("must not contain first or last name")
     })
 
     it("should return validation error message if control state contains first name in with different casing", () => {
       const value = `henk`;
       const control = new FormControl(value, CustomValidators.passwordValidator(firstNameControl, firstNameControl))
 
-      expect(control.errors?.containsFirstOrLastName).toEqual( "must not contain first or last name")
+      expect(control.errors?.containsFirstOrLastName).toEqual("must not contain first or last name")
     })
 
     it("should return validation error if control state contains last name", () => {

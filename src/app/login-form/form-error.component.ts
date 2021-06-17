@@ -10,7 +10,8 @@ export class FormErrorComponent implements OnInit {
 
   @Input() public errors: ValidationErrors | null = null
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
