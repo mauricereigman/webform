@@ -6,7 +6,7 @@
         <mat-label>first name</mat-label>
         <input [formControl]="firstNameControl" matInput placeholder="first name">
         <mat-error>
-          <app-form-field-errors [errors]="firstNameControl.errors"></app-form-field-errors>
+          <login-form-field-errors [errors]="firstNameControl.errors"></login-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -14,7 +14,7 @@
         <mat-label>last name</mat-label>
         <input [formControl]="lastNameControl" matInput placeholder="last name">
         <mat-error>
-          <app-form-field-errors [errors]="lastNameControl.errors"></app-form-field-errors>
+          <login-form-field-errors [errors]="lastNameControl.errors"></login-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -22,7 +22,7 @@
         <mat-label>email</mat-label>
         <input [formControl]="emailControl" matInput placeholder="email" type="email">
         <mat-error>
-          <app-form-field-errors [errors]="emailControl.errors"></app-form-field-errors>
+          <login-form-field-errors [errors]="emailControl.errors"></login-form-field-errors>
         </mat-error>
       </mat-form-field>
 
@@ -30,13 +30,13 @@
         <mat-label>password</mat-label>
         <input [formControl]="passwordControl" matInput placeholder="password" type="password">
         <mat-error>
-          <app-form-field-errors [errors]="passwordControl.errors"></app-form-field-errors>
+          <login-form-field-errors [errors]="passwordControl.errors"></login-form-field-errors>
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" class="mx-auto mt-5" (click)="signUp(form)" [disabled]="form.invalid || submitted">submit</button>
+      <button mat-raised-button color="primary" class="mx-auto mt-5" (click)="signUp(form)" [disabled]="form.invalid || submitted || suppressSubmitButton">submit</button>
       <mat-error>
-        <app-form-field-errors [errors]="form.errors"></app-form-field-errors>
+        <login-form-field-errors [errors]="form.errors"></login-form-field-errors>
       </mat-error>
     </form>
 

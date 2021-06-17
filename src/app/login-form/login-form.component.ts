@@ -5,7 +5,7 @@ import {SignUpService} from "../services/sign-up.service";
 import {tap} from "rxjs/operators";
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })

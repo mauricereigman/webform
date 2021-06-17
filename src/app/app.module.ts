@@ -3,32 +3,19 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginFormComponent} from './login-form/login-form.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatInputModule} from "@angular/material/input";
+import {LoginFormModule} from "./login-form/login-form.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatCardModule} from "@angular/material/card";
-import { FormErrorComponent } from './form-error/form-error.component';
-import {MatButtonModule} from "@angular/material/button";
-import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    FormErrorComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatInputModule,
+    LoginFormModule,
     MatToolbarModule,
-    MatCardModule,
-    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
