@@ -5,7 +5,7 @@ export class CustomValidators {
   public static readonly NO_LOWER_AND_UPPER_CASE_MESSAGE = "must consist of at least one uppercase and one lowercase character"
   public static readonly INVALID_CHARACTER_COUNT_MESSAGE = "must contain at least 8 characters"
   public static readonly CONTAINS_FIRST_OR_LAST_NAME_MESSAGE = "must not contain first or last name"
-  public static readonly INVALID_EMAIL = "email addres should adhere to format henk@gmail.com"
+  public static readonly INVALID_EMAIL = "email address should adhere to format henk@gmail.com"
 
   public static requiredValidator(fieldName: string): ValidatorFn {
     return (control): ValidationErrors | null =>
