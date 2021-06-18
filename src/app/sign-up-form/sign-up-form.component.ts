@@ -41,17 +41,25 @@ export class SignUpFormComponent {
       email: form.value.email
     }).pipe(
       tap(
-        res => {
-          this.submitted = true
-          this.submitInProgress = false
-          this.form.disable()
-        },
-        err => {
-          form.setErrors({unknownError: "oh ooh, something went wrong"})
-          this.submitInProgress = false
-        }
+        this.handleSignupSuccess(form),
+        this.handleSignupError(form)
       )
     ).subscribe()
+  }
+
+  private handleSignupSuccess(form: FormGroup): () => void {
+    return  () => {
+      this.submitted = true
+      this.submitInProgress = false
+      form.disable()
+    }
+  }
+
+  private handleSignupError(form: FormGroup): () => void {
+    return () => {
+      form.setErrors({unknownError: "oh ooh, something went wrong"})
+      this.submitInProgress = false
+    }
   }
 
 }
