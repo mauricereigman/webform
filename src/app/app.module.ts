@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginFormModule} from "./login-form/login-form.module";
+import {SignUpFormModule} from "./sign-up-form/sign-up-form.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
@@ -13,7 +13,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginFormModule,
+    SignUpFormModule,
     MatToolbarModule,
   ],
   providers: [],

@@ -7,17 +7,18 @@ import {MatInputModule} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import {LoginFormComponent} from "./login-form.component";
 import {FormErrorComponent} from "./form-error.component";
+import {SignUpFormComponent} from "./sign-up-form.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
   declarations: [
-    LoginFormComponent,
+    SignUpFormComponent,
     FormErrorComponent
   ],
   exports: [
-    LoginFormComponent
+    SignUpFormComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +28,9 @@ import {FormErrorComponent} from "./form-error.component";
     MatInputModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ]
 })
-export class LoginFormModule {
+export class SignUpFormModule {
 }

@@ -5,11 +5,11 @@ import {SignUpService} from "../services/sign-up.service";
 import {tap} from "rxjs/operators";
 
 @Component({
-  selector: 'login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'sign-up-form',
+  templateUrl: './sign-up-form.component.html',
+  styleUrls: ['./sign-up-form.component.scss']
 })
-export class LoginFormComponent {
+export class SignUpFormComponent {
 
   public readonly firstNameControl = new FormControl(undefined, CustomValidators.requiredValidator("first name"))
   public readonly lastNameControl = new FormControl(undefined, CustomValidators.requiredValidator("last name"))
@@ -28,13 +28,13 @@ export class LoginFormComponent {
   })
 
   public submitted: boolean = false;
-  public suppressSubmitButton = false;
+  public submitInProgress = false;
 
   constructor(private readonly signUpService: SignUpService) {
   }
 
   public signUp(form: FormGroup): void {
-    this.suppressSubmitButton = true
+    this.submitInProgress = true
     this.signUpService.signUp({
       firstName: form.value.firstName,
       lastName: form.value.lastName,
@@ -43,10 +43,12 @@ export class LoginFormComponent {
       tap(
         res => {
           this.submitted = true
+          this.submitInProgress = false
+          this.form.disable()
         },
         err => {
           form.setErrors({unknownError: "oh ooh, something went wrong"})
-          this.suppressSubmitButton = false
+          this.submitInProgress = false
         }
       )
     ).subscribe()
